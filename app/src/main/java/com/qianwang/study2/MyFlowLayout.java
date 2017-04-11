@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 
 /**
  * Created by sky on 2017/4/10.
@@ -39,12 +38,12 @@ public class MyFlowLayout extends ViewGroup {
         int modeHigeht = MeasureSpec.getMode(heightMeasureSpec);
 
 
-        int paddingLefr = getPaddingLeft();
+        int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();
         int paddingRight = getPaddingRight();
         int paddingBottom = getPaddingBottom();
 
-        int useWidth = paddingLefr + paddingRight;
+        int useWidth = paddingLeft + paddingRight;
         int usehight = paddingTop + paddingBottom;
 
         int childMaxHeightInThisLine = 0;
@@ -64,8 +63,16 @@ public class MyFlowLayout extends ViewGroup {
                 childUseWidth += getMeasuredWidth();
                 childUseHeight += getMeasuredHeight();
 
-                LayoutParams childLayoutParams = child.getLayoutParams();
-                MarginLayoutParams params = (MarginLayoutParams) childLayoutParams;
+
+                ViewGroup.LayoutParams childLayoutParams = child.getLayoutParams();
+                ViewGroup.MarginLayoutParams params = null;
+                //获取view的margin设置参数
+                if (params instanceof ViewGroup.MarginLayoutParams) {
+                    params = (ViewGroup.MarginLayoutParams) childLayoutParams;
+                } else {
+                    //不存在时创建一个新的参数
+                    params = new ViewGroup.MarginLayoutParams(childLayoutParams);
+                }
                 int childLeftMargin = params.leftMargin;
                 int childTopMargin = params.topMargin;
                 int childRightMargin = params.rightMargin;
@@ -74,7 +81,7 @@ public class MyFlowLayout extends ViewGroup {
                 childUseWidth += childLeftMargin + childRightMargin;
                 childUseHeight += childTopMargin + childBottomMargin;
 
-                if (useWidth + childUseWidth < widthMeasureSpec) {
+                if (useWidth + childUseWidth < sizeWidth) {
 
                     useWidth += childUseWidth;
                     if (childUseHeight > usehight) {
@@ -95,16 +102,15 @@ public class MyFlowLayout extends ViewGroup {
         }
 
         usehight += childMaxHeightInThisLine;
-
-        setMeasuredDimension(widthMeasureSpec, usehight);
+        setMeasuredDimension(sizeWidth, usehight);
     }
+
 
     @Override
     protected void onLayout(boolean c, int l, int t, int r, int b) {
-
         int paddingLeft = getPaddingLeft();
-        int paddingTop = getPaddingTop();
         int paddingRight = getPaddingRight();
+        int paddingTop = getPaddingTop();
         int paddingBottom = getPaddingBottom();
 
         int childStartLayoutX = paddingLeft;
@@ -115,6 +121,8 @@ public class MyFlowLayout extends ViewGroup {
         int childMaxHeight = 0;
 
         int childCount = getChildCount();
+
+
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
             if (child.getVisibility() != GONE) {
@@ -122,47 +130,61 @@ public class MyFlowLayout extends ViewGroup {
                 int childNeedWidth, childNeedHeight;
                 int left, top, right, bottom;
 
-                int childMeasureWidth = getMeasuredWidth();
-                int childMeasureHeight = getMeasuredHeight();
+                int childMeasureWidth = child.getMeasuredWidth();
+                int childMeasureHeight = child.getMeasuredHeight();
 
-                LayoutParams childLayoutParams = child.getLayoutParams();
-                MarginLayoutParams params = (MarginLayoutParams) childLayoutParams;
+                ViewGroup.LayoutParams childLayoutParams = child.getLayoutParams();
+                ViewGroup.MarginLayoutParams params = null;
+                //获取view的margin设置参数
+                if (params instanceof ViewGroup.MarginLayoutParams) {
+                    params = (ViewGroup.MarginLayoutParams) childLayoutParams;
+                } else {
+                    //不存在时创建一个新的参数
+                    params = new ViewGroup.MarginLayoutParams(childLayoutParams);
+                }
+
                 int childLeftMargin = params.leftMargin;
                 int childRightMargin = params.rightMargin;
                 int childTopMargin = params.topMargin;
                 int childBottomMargin = params.bottomMargin;
 
-                childNeedWidth = childMeasureWidth + childLeftMargin + childRightMargin;
-                childNeedHeight = childMeasureHeight + childBottomMargin + childTopMargin;
+                childNeedWidth = childLeftMargin + childRightMargin + childMeasureWidth;
+                childNeedHeight = childTopMargin + childBottomMargin + childMeasureHeight;
 
                 if (childNeedWidth + useWidth < r - 1) {
 
                     if (childNeedHeight > childMaxHeight) {
                         childMaxHeight = childNeedHeight;
                     }
-
                     left = childStartLayoutX + childLeftMargin;
                     top = childStartLayoutY + childTopMargin;
-                    right = left +childMeasureWidth;
+                    right = left + childMeasureWidth;
                     bottom = top + childMeasureHeight;
-
-                    useWidth += left;
+                    useWidth += childNeedWidth;
                     childStartLayoutX += childNeedWidth;
 
                 } else {
 
                     childStartLayoutY += childMaxHeight + verticalSpacing;
+                    childStartLayoutX = paddingLeft;
+                    useWidth=paddingLeft+paddingRight;
 
                     left = paddingLeft + childLeftMargin;
-                    top =childStartLayoutY+childTopMargin;
-                    right=left+childMeasureWidth;
-                    bottom=top+childMeasureHeight;
+                    top = childStartLayoutY + childTopMargin;
+                    right = left + childMeasureWidth;
+                    bottom = top + childMeasureHeight;
+
+                    useWidth += childNeedWidth;
+                    childStartLayoutX += childNeedWidth;
+                    childMaxHeight=childNeedHeight;
 
 
                 }
 
-
+                child.layout(left,top,right,bottom);
             }
         }
+
+
     }
 }
