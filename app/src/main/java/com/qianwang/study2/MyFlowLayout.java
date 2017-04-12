@@ -2,6 +2,7 @@ package com.qianwang.study2;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -67,12 +68,13 @@ public class MyFlowLayout extends ViewGroup {
                 ViewGroup.LayoutParams childLayoutParams = child.getLayoutParams();
                 ViewGroup.MarginLayoutParams params = null;
                 //获取view的margin设置参数
-                if (params instanceof ViewGroup.MarginLayoutParams) {
+                if (childLayoutParams instanceof ViewGroup.MarginLayoutParams) {
                     params = (ViewGroup.MarginLayoutParams) childLayoutParams;
                 } else {
                     //不存在时创建一个新的参数
                     params = new ViewGroup.MarginLayoutParams(childLayoutParams);
                 }
+
                 int childLeftMargin = params.leftMargin;
                 int childTopMargin = params.topMargin;
                 int childRightMargin = params.rightMargin;
@@ -94,8 +96,6 @@ public class MyFlowLayout extends ViewGroup {
                     usehight += childMaxHeightInThisLine + verticalSpacing;
                     useWidth = getPaddingLeft() + getPaddingRight() + useWidth;
                     childMaxHeightInThisLine = usehight;
-
-
                 }
 
             }
@@ -136,7 +136,7 @@ public class MyFlowLayout extends ViewGroup {
                 ViewGroup.LayoutParams childLayoutParams = child.getLayoutParams();
                 ViewGroup.MarginLayoutParams params = null;
                 //获取view的margin设置参数
-                if (params instanceof ViewGroup.MarginLayoutParams) {
+                if (childLayoutParams instanceof ViewGroup.MarginLayoutParams) {
                     params = (ViewGroup.MarginLayoutParams) childLayoutParams;
                 } else {
                     //不存在时创建一个新的参数
@@ -144,6 +144,7 @@ public class MyFlowLayout extends ViewGroup {
                 }
 
                 int childLeftMargin = params.leftMargin;
+                Log.i("520it", "" + "**************************"+childLeftMargin);
                 int childRightMargin = params.rightMargin;
                 int childTopMargin = params.topMargin;
                 int childBottomMargin = params.bottomMargin;
@@ -178,7 +179,6 @@ public class MyFlowLayout extends ViewGroup {
                     childStartLayoutX += childNeedWidth;
                     childMaxHeight=childNeedHeight;
 
-
                 }
 
                 child.layout(left,top,right,bottom);
@@ -186,5 +186,18 @@ public class MyFlowLayout extends ViewGroup {
         }
 
 
+    }
+
+    /**
+     * 每一个自定义viewgroup都需要指定一个LayoutParams  eg:Linearlayout.LayoutParams  RalactiveLayout.LayoutParams
+     *
+     * @param attrs
+     * @return
+     */
+
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+
+        return new MarginLayoutParams(getContext(), attrs);
     }
 }

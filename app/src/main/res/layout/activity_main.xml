@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+
+<com.qianwang.study2.MyFlowLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/flowlayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.qianwang.study2.MainActivity">
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    >
 
-    <com.qianwang.study2.MyFlowLayout
-        android:id="@+id/flowlayout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
+    <com.qianwang.study2.RectTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="休闲裤"
+        android:textColor="@color/blue"
+        android:textSize="20dp"
+        />
 
 
-    </com.qianwang.study2.MyFlowLayout>
-</LinearLayout>
+    <com.qianwang.study2.RectTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="衣服"
+        android:textColor="@color/blue"
+        android:textSize="20dp"
+        />
+    <com.qianwang.study2.RectTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="短裤，袜子"
+        android:textColor="@color/blue"
+        android:textSize="20dp"
+        />
+
+
+    <com.qianwang.study2.RectTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="帽子"
+        android:textColor="@color/blue"
+        android:textSize="20dp"
+        />
+
+    <com.qianwang.study2.RectTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="其他服装"
+        android:textColor="@color/blue"
+        android:textSize="20dp"
+        />
+
+</com.qianwang.study2.MyFlowLayout>
