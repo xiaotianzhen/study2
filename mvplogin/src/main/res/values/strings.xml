@@ -6,4 +6,7 @@
     <string name="btnlogin">登录</string>
     <string name="btncancel">取消</string>
     <string name="pwd_hint">请输入密码</string>
+    <string name="btregister">注册</string>
+    <string name="phoneLogin">手机登录</string>
+    <string name="tvVerifyCode">获取手机验证码</string>
 </resources>

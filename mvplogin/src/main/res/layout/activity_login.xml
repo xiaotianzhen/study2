@@ -5,10 +5,12 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.qianwang.mvplogin.view.LoginActivity">
+    tools:context="com.qianwang.mvplogin.view.LoginActivity"
+    android:background="@color/white">
 
 
     <RelativeLayout
+        android:id="@+id/reLyout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
@@ -59,6 +61,15 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:clickable="true"
+        android:id="@+id/tvVerifyCode"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/reLyout"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvVerifyCode"/>
     <RelativeLayout
         android:layout_marginBottom="100dp"
         android:layout_alignParentBottom="true"
@@ -68,17 +79,26 @@
 
 
         <Button
-            android:id="@+id/btn_cancel"
+            android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btncancel"/>
+            android:text="@string/btregister"/>
         <Button
-            android:layout_toRightOf="@id/btn_cancel"
+            android:layout_toRightOf="@id/btn_register"
             android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnlogin"/>
 
     </RelativeLayout>
+
+    <Button
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:id="@+id/btn_phoneLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phoneLogin"/>
 
 </RelativeLayout>
