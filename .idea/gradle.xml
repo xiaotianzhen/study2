@@ -10,6 +10,15 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/audiorecord" />
+            <option value="$PROJECT_DIR$/collapseview" />
+            <option value="$PROJECT_DIR$/mvplogin" />
+            <option value="$PROJECT_DIR$/mvplogin2" />
+            <option value="$PROJECT_DIR$/parsejson" />
+            <option value="$PROJECT_DIR$/scrollclash" />
+            <option value="$PROJECT_DIR$/softinput" />
+            <option value="$PROJECT_DIR$/viewgroup" />
+            <option value="$PROJECT_DIR$/webviewbetter" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

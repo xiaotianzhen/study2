@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qianwang.mvplogin.view.LoginActivity">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/login"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_login"
+            android:hint="@string/login_hint"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/tv_login"
+            android:text="@string/password"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_username"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_pwd"
+            android:hint="@string/pwd_hint"/>
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressbar"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:layout_marginBottom="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btncancel"/>
+        <Button
+            android:layout_toRightOf="@id/btn_cancel"
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnlogin"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

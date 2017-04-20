@@ -1,7 +1,5 @@
 package com.qianwang.webviewbetter;
 
-
-
 import android.content.DialogInterface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
