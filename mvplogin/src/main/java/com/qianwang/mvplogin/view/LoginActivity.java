@@ -3,6 +3,7 @@ package com.qianwang.mvplogin.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -110,6 +111,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     @Override
     public void loginSuccess() {
         Toast.makeText(getContext(), "登录成功", Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
