@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/audiorecord/audiorecord.iml" filepath="$PROJECT_DIR$/audiorecord/audiorecord.iml" />
       <module fileurl="file://$PROJECT_DIR$/collapseview/collapseview.iml" filepath="$PROJECT_DIR$/collapseview/collapseview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/disklrucache/disklrucache.iml" filepath="$PROJECT_DIR$/disklrucache/disklrucache.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvplogin/mvplogin.iml" filepath="$PROJECT_DIR$/mvplogin/mvplogin.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvplogin2/mvplogin2.iml" filepath="$PROJECT_DIR$/mvplogin2/mvplogin2.iml" />
       <module fileurl="file://$PROJECT_DIR$/parsejson/parsejson.iml" filepath="$PROJECT_DIR$/parsejson/parsejson.iml" />

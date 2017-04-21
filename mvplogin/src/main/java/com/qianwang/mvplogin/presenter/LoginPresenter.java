@@ -1,22 +1,14 @@
 package com.qianwang.mvplogin.presenter;
 
-import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.os.Handler;
-import android.util.Log;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 
+import android.os.Handler;
 import com.qianwang.mvplogin.presenter.Ipresenter.ILoginPresenter;
 import com.qianwang.mvplogin.util.NetUtils;
 import com.qianwang.mvplogin.util.PhoneUtils;
 import com.qianwang.mvplogin.view.IView.ILoginView;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 
 /**
@@ -141,4 +133,5 @@ public class LoginPresenter extends ILoginPresenter {
     public void finish() {
 
     }
+
 }

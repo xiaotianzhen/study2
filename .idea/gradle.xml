@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/audiorecord" />
             <option value="$PROJECT_DIR$/collapseview" />
+            <option value="$PROJECT_DIR$/disklrucache" />
             <option value="$PROJECT_DIR$/mvplogin" />
             <option value="$PROJECT_DIR$/mvplogin2" />
             <option value="$PROJECT_DIR$/parsejson" />

@@ -1,1 +1,1 @@
-include ':app', ':collapseview', ':viewgroup', ':scrollclash', ':softinput', ':webviewbetter', ':audiorecord', ':audiorecord', ':parsejson', ':mvplogin', ':mvplogin2'
+include ':app', ':collapseview', ':viewgroup', ':scrollclash', ':softinput', ':webviewbetter', ':audiorecord', ':audiorecord', ':parsejson', ':mvplogin', ':mvplogin2', ':disklrucache'

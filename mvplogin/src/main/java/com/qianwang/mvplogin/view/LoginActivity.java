@@ -3,6 +3,7 @@ package com.qianwang.mvplogin.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -244,5 +245,21 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
                 break;
 
         }
+    }
+
+
+    public String getDiskCacheDir(Context context){
+
+        String cachePath="";
+        //SD卡存在或者是不能sd卡不能别移除
+        if(android.os.Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)||!Environment.isExternalStorageRemovable()){
+
+            cachePath=context.getExternalCacheDir().getPath();   //android/data/  sd卡目录下的缓存文件
+        }else {
+            cachePath=context.getCacheDir().getPath();          //data/data/    系统目录下的缓存文件
+        }
+
+
+        return cachePath;
     }
 }
