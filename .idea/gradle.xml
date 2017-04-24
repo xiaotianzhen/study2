@@ -9,10 +9,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/acache" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/audiorecord" />
             <option value="$PROJECT_DIR$/collapseview" />
             <option value="$PROJECT_DIR$/disklrucache" />
+            <option value="$PROJECT_DIR$/fresco" />
             <option value="$PROJECT_DIR$/mvplogin" />
             <option value="$PROJECT_DIR$/mvplogin2" />
             <option value="$PROJECT_DIR$/parsejson" />

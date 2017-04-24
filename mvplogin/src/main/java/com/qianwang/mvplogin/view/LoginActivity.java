@@ -16,8 +16,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.qianwang.mvplogin.R;
 import com.qianwang.mvplogin.presenter.LoginPresenter;
+import com.qianwang.mvplogin.util.ACache;
 import com.qianwang.mvplogin.view.IView.ILoginView;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView, View.OnClickListener {
@@ -50,11 +52,19 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         tvVerifyCode.setOnClickListener(this);
     }
 
+    public void initData() {
+        Log.i("520it", "username" + "**************************"+ACache.get(this).getAsString("username"));
+        et_username.setText(ACache.get(this).getAsString("username"));
+        et_pwd.setText(ACache.get(this).getAsString("password"));
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
+        initData();
         mLoginPresent = new LoginPresenter(this);
         userNameLoginViewInit();
     }
@@ -71,8 +81,6 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         animation.setDuration(2000);
         tvVerifyCode.setAnimation(animation);
         et_username.setInputType(EditorInfo.TYPE_CLASS_TEXT);
-        et_username.setText("");
-        et_pwd.setText("");
         btn_phoneLogin.setText("手机号登录");
         et_username.setHint("请输入用户名");
         et_pwd.setHint("请输入密码");
@@ -94,8 +102,6 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         animation.setDuration(2000);
         tvVerifyCode.setAnimation(animation);
         et_username.setInputType(EditorInfo.TYPE_CLASS_PHONE);
-        et_username.setText("");
-        et_pwd.setText("");
         btn_phoneLogin.setText("用户登录");
         et_username.setHint("请输入手机号");
         et_pwd.setHint("请输入验证码");
@@ -111,14 +117,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     @Override
     public void loginSuccess() {
         Toast.makeText(getContext(), "登录成功", Toast.LENGTH_SHORT).show();
-        Intent intent=new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
     @Override
     public void loginFailed(int status, String msg) {
-        Toast.makeText(getContext(), status+msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), status + msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -217,23 +223,23 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         switch (view.getId()) {
             case R.id.btn_login:
 
-                if(isPhoneLogin){
-                    mLoginPresent.phoneLogin(et_username.getText().toString(),et_pwd.getText().toString());
-                }else {
-                    mLoginPresent.userNameLogin(et_username.getText().toString(),et_pwd.getText().toString());
+                if (isPhoneLogin) {
+                    mLoginPresent.phoneLogin(et_username.getText().toString(), et_pwd.getText().toString());
+                } else {
+                    mLoginPresent.userNameLogin(et_username.getText().toString(), et_pwd.getText().toString());
                 }
                 break;
             case R.id.tvVerifyCode:
 
                 mLoginPresent.sendVerifyCode(et_username.getText().toString());
 
-                final EditText editText=new EditText(getContext());
+                final EditText editText = new EditText(getContext());
                 new AlertDialog.Builder(getContext()).setTitle("验证码").setMessage("请输入短信获取到的验证码").setView(editText)
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                verifyCode=editText.getText().toString();
+                                verifyCode = editText.getText().toString();
 
                                 et_pwd.setText(verifyCode);
                             }
@@ -252,15 +258,15 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     }
 
 
-    public String getDiskCacheDir(Context context){
+    public String getDiskCacheDir(Context context) {
 
-        String cachePath="";
+        String cachePath = "";
         //SD卡存在或者是不能sd卡不能别移除
-        if(android.os.Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)||!Environment.isExternalStorageRemovable()){
+        if (android.os.Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) || !Environment.isExternalStorageRemovable()) {
 
-            cachePath=context.getExternalCacheDir().getPath();   //android/data/  sd卡目录下的缓存文件
-        }else {
-            cachePath=context.getCacheDir().getPath();          //data/data/    系统目录下的缓存文件
+            cachePath = context.getExternalCacheDir().getPath();   //android/data/  sd卡目录下的缓存文件
+        } else {
+            cachePath = context.getCacheDir().getPath();          //data/data/    系统目录下的缓存文件
         }
 
 

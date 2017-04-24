@@ -4,13 +4,15 @@ import android.content.Context;
 import android.provider.SyncStateContract;
 import android.text.TextUtils;
 
+import com.qianwang.mvplogin.util.ACache;
+
 /**
  * Created by sky on 2017/4/20.
  */
 
 public class UserInfoCache {
 
-    /*public static void saveCache(Context context, UserInfo info){
+    public static void saveCache(Context context, UserInfo info){
         ACache.get(context).put("user_id",info.getUserId());
         ACache.get(context).put("nickname",info.getNickname());
         ACache.get(context).put("head_pic",info.getHeadPic());
@@ -20,9 +22,9 @@ public class UserInfoCache {
         ACache.get(context).put("adk_account_type",info.getSdkAccountType());
         ACache.get(context).put("sex",info.getSex());
 
-        if (info.getSdkAppId() != null && TextUtils.isDigitsOnly(info.getSdkAccountType())){
-            SyncStateContract.Constants.IMSDK_ACCOUNT_TYPE = Integer.parseInt(info.getSdkAccountType());
-        }
+        /*if (info.getSdkAppId() != null && TextUtils.isDigitsOnly(info.getSdkAccountType())){
+            Constants.IMSDK_ACCOUNT_TYPE = Integer.parseInt(info.getSdkAccountType());
+        }*/
     }
 
 
@@ -67,5 +69,5 @@ public class UserInfoCache {
         ACache.get(context).remove("adk_account_type");
         ACache.get(context).remove("sdk_app_id");
         ACache.get(context).remove("sex");
-    }*/
+    }
 }

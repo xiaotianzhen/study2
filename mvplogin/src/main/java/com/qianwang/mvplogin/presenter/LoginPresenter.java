@@ -3,12 +3,17 @@ package com.qianwang.mvplogin.presenter;
 
 import android.content.Intent;
 import android.os.Handler;
+
+import com.qianwang.mvplogin.model.UserInfo;
+import com.qianwang.mvplogin.model.UserInfoCache;
 import com.qianwang.mvplogin.presenter.Ipresenter.ILoginPresenter;
+import com.qianwang.mvplogin.util.ACache;
 import com.qianwang.mvplogin.util.NetUtils;
 import com.qianwang.mvplogin.util.PhoneUtils;
 import com.qianwang.mvplogin.view.IView.ILoginView;
 import com.qianwang.mvplogin.view.MainActivity;
 
+import java.text.AttributedCharacterIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -104,6 +109,11 @@ public class LoginPresenter extends ILoginPresenter {
                 public void run() {
 
                     if (userName.equals("dong") && password.equals("1234567")) {
+
+//                        UserInfo info=new UserInfo();
+//                        UserInfoCache.saveCache(mLoginView.getContext(),info);   //info 在实际工作中为，在登录后获得服务器返回的用户详细信息
+                        ACache.get(mLoginView.getContext()).put("username","dong");
+                        ACache.get(mLoginView.getContext()).put("password","1234567");
                         mLoginView.loginSuccess();
                     } else {
                         mLoginView.loginFailed(404, "登录失败");
