@@ -119,7 +119,7 @@ public class LoginPresenter extends ILoginPresenter {
                         mLoginView.loginFailed(404, "登录失败");
                     }
                 }
-            }, 2000);
+            }, 500);
         }
         mLoginView.dismissLoading();
     }
@@ -130,9 +130,9 @@ public class LoginPresenter extends ILoginPresenter {
         if (PhoneUtils.isMobile(phoneNum)) {
             boolean success = true;
             if (success) {
-                mLoginView.verifyCodeSuccess(100, 200);
+                mLoginView.verifyCodeSuccess(60, 60);
             } else {
-                mLoginView.verifyCodeSuccess(100, 200);
+                mLoginView.verifyCodeFailed("验证失败");
             }
         }
     }

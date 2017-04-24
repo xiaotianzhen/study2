@@ -20,7 +20,10 @@ import android.widget.Toast;
 import com.qianwang.mvplogin.R;
 import com.qianwang.mvplogin.presenter.LoginPresenter;
 import com.qianwang.mvplogin.util.ACache;
+import com.qianwang.mvplogin.util.OtherUtils;
 import com.qianwang.mvplogin.view.IView.ILoginView;
+
+import java.lang.ref.WeakReference;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView, View.OnClickListener {
 
@@ -53,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     }
 
     public void initData() {
-        Log.i("520it", "username" + "**************************"+ACache.get(this).getAsString("username"));
+        Log.i("520it", "username" + "**************************" + ACache.get(this).getAsString("username"));
         et_username.setText(ACache.get(this).getAsString("username"));
         et_pwd.setText(ACache.get(this).getAsString("password"));
 
@@ -102,6 +105,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         animation.setDuration(2000);
         tvVerifyCode.setAnimation(animation);
         et_username.setInputType(EditorInfo.TYPE_CLASS_PHONE);
+        et_username.setText("");
+        et_pwd.setText("");
         btn_phoneLogin.setText("用户登录");
         et_username.setHint("请输入手机号");
         et_pwd.setHint("请输入验证码");
@@ -159,6 +164,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     @Override
     public void verifyCodeSuccess(int reaskDuration, int expireDuration) {
         showMsg("注册短信下发，验证码 " + expireDuration / 60 + " 分钟内有效！");
+        OtherUtils.startTimer(new WeakReference<TextView>(tvVerifyCode), "验证码", reaskDuration, 1);
     }
 
     @Override
@@ -231,45 +237,32 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
                 break;
             case R.id.tvVerifyCode:
 
+
                 mLoginPresent.sendVerifyCode(et_username.getText().toString());
 
-                final EditText editText = new EditText(getContext());
+             /*   final EditText editText = new EditText(getContext());
                 new AlertDialog.Builder(getContext()).setTitle("验证码").setMessage("请输入短信获取到的验证码").setView(editText)
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                                 verifyCode = editText.getText().toString();
-
                                 et_pwd.setText(verifyCode);
+
                             }
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
-                }).show();
+                }).show();*/
+
+
                 break;
             case R.id.btn_register:
 
                 break;
 
         }
-    }
-
-
-    public String getDiskCacheDir(Context context) {
-
-        String cachePath = "";
-        //SD卡存在或者是不能sd卡不能别移除
-        if (android.os.Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) || !Environment.isExternalStorageRemovable()) {
-
-            cachePath = context.getExternalCacheDir().getPath();   //android/data/  sd卡目录下的缓存文件
-        } else {
-            cachePath = context.getCacheDir().getPath();          //data/data/    系统目录下的缓存文件
-        }
-
-
-        return cachePath;
     }
 }
