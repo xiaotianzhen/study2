@@ -110,8 +110,13 @@ public class RectTextView extends TextView {
         canvas.drawRoundRect(rectF,20,20,mPaint);
     }
 
+    public void setPaintColor(int color){
+
+        mPaint.setColor(color);
+    }
+
     /**
-     * 将px,转换为dp
+     * dp转px
      * @param context
      * @param dpVal
      * @return

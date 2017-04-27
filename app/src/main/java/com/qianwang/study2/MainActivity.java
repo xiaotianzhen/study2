@@ -25,18 +25,21 @@ public class MainActivity extends AppCompatActivity {
         RectTextView textView = new RectTextView(getApplicationContext());
         textView.setGravity(Gravity.CENTER);
         textView.setPadding(10, 5, 10, 5);
-        textView.setTextSize(20);
+        textView.setTextSize(15);
         textView.setText("鞋子");
         textView.setTextColor(Color.BLUE);
+        textView.setPaintColor(Color.RED);
+
         ViewGroup.LayoutParams params1=setViewMargin(textView);
         mMyFlowLayout.addView(textView,params1);
 
         RectTextView textView2 = new RectTextView(getApplicationContext());
-        textView.setGravity(Gravity.CENTER);
+        textView2.setGravity(Gravity.CENTER);
         textView2.setPadding(10, 5, 10, 5);
-        textView2.setTextSize(20);
+        textView2.setTextSize(15);
         textView2.setText("牛仔裤 ");
         textView2.setTextColor(Color.BLUE);
+        textView2.setPaintColor(Color.RED);
 
         ViewGroup.LayoutParams params2=setViewMargin(textView2);
         mMyFlowLayout.addView(textView2,params2);

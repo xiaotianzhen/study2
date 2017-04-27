@@ -18,7 +18,7 @@
         android:paddingRight="10dp"
         android:text="休闲裤"
         android:textColor="@color/blue"
-        android:textSize="20dp"
+        android:textSize="15dp"
         />
 
 
@@ -31,7 +31,7 @@
         android:paddingRight="10dp"
         android:text="衣服"
         android:textColor="@color/blue"
-        android:textSize="20dp"
+        android:textSize="15dp"
         />
     <com.qianwang.study2.RectTextView
         android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
         android:paddingRight="10dp"
         android:text="短裤，袜子"
         android:textColor="@color/blue"
-        android:textSize="20dp"
+        android:textSize="15dp"
         />
 
 
@@ -55,7 +55,7 @@
         android:paddingRight="10dp"
         android:text="帽子"
         android:textColor="@color/blue"
-        android:textSize="20dp"
+        android:textSize="15dp"
         />
 
     <com.qianwang.study2.RectTextView
@@ -67,7 +67,7 @@
         android:paddingRight="10dp"
         android:text="其他服装"
         android:textColor="@color/blue"
-        android:textSize="20dp"
+        android:textSize="15dp"
         />
 
 </com.qianwang.study2.MyFlowLayout>
