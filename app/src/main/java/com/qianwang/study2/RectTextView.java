@@ -113,6 +113,7 @@ public class RectTextView extends TextView {
     public void setPaintColor(int color){
 
         mPaint.setColor(color);
+        invalidate();
     }
 
     /**

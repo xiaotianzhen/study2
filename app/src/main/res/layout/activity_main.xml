@@ -10,6 +10,7 @@
     >
 
     <com.qianwang.study2.RectTextView
+        android:id="@+id/tab1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -32,6 +33,7 @@
         android:text="衣服"
         android:textColor="@color/blue"
         android:textSize="15dp"
+        android:enabled="true"
         />
     <com.qianwang.study2.RectTextView
         android:layout_width="wrap_content"

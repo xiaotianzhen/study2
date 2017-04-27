@@ -7,17 +7,21 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
     private MyFlowLayout mMyFlowLayout;
+    private RectTextView  tab1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tab1= (RectTextView) findViewById(R.id.tab1);
+
+        tab1.setOnClickListener(this);
 
 
         mMyFlowLayout = (MyFlowLayout) findViewById(R.id.flowlayout);
@@ -67,5 +71,16 @@ public class MainActivity extends AppCompatActivity {
         marginParams.setMargins(20, 20, 20, 20);
         view.setLayoutParams(marginParams);
         return marginParams;
+    }
+
+    @Override
+    public void onClick(View view) {
+        Log.i("520it", "" + "************  dianjile  **************");
+        switch (view.getId()){
+            case R.id.tab1:
+                tab1.setPaintColor(Color.RED);
+                break;
+        }
+
     }
 }
